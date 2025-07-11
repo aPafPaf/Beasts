@@ -42,8 +42,7 @@ public static class LeagueUrlExtractor
     {
         using var httpClient = new HttpClient();
 
-        // Добавляем заголовок User-Agent (некоторые API требуют этого)
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "POE-League-Url-Extractor");
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0");
 
         var response = await httpClient.GetAsync("https://api.pathofexile.com/leagues");
         response.EnsureSuccessStatusCode();
