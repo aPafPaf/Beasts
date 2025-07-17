@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using Beasts.Data;
+﻿using Beasts.Data;
 using Beasts.ExileCore;
 using ExileCore.PoEMemory.Components;
 using ExileCore.Shared.Enums;
 using ImGuiNET;
 using SharpDX;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using Vector2 = System.Numerics.Vector2;
 using Vector3 = System.Numerics.Vector3;
 
@@ -31,9 +31,11 @@ public partial class Beasts
             var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Metadata == beast.Path).First();
 
             if (!Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
-            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
-            Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), Color.White, FontAlign.Center);
 
+            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
+            if (!WorldPositionOnScreenBool(pos)) continue;
+
+            Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), Color.White, FontAlign.Center);
             DrawFilledCircleInWorldPosition(pos, 50, GetSpecialBeastColor(beast.DisplayName));
         }
     }
@@ -149,5 +151,24 @@ public partial class Beasts
 
         Graphics.DrawConvexPolyFilled(circlePoints.ToArray(), color with { A = Color.ToByte((int)((double)0.2f * byte.MaxValue)) });
         Graphics.DrawPolyLine(circlePoints.ToArray(), color, 2);
+    }
+
+    private bool WorldPositionOnScreenBool(Vector3 worldPos, int edgeBounds = 70)
+    {
+        var windowRect = GameController.Window.GetWindowRectangle();
+        var screenPos = GameController.IngameState.Camera.WorldToScreen(worldPos);
+
+        windowRect.X -= windowRect.Location.X;
+        windowRect.Y -= windowRect.Location.Y;
+
+        var result = GameController.Window.ScreenToClient((int)screenPos.X, (int)screenPos.Y) + GameController.Window.GetWindowRectangle().Location;
+
+        var rectBounds = new SharpDX.RectangleF(
+            x: windowRect.X + edgeBounds,
+            y: windowRect.Y + edgeBounds,
+            width: windowRect.Width - (edgeBounds * 2),
+            height: windowRect.Height - (edgeBounds * 2));
+
+        return rectBounds.Contains(result);
     }
 }
