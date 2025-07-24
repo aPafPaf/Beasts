@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Jetbrains
 .idea/
+/Errors.txt
