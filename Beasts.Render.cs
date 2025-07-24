@@ -1,6 +1,7 @@
 ﻿using Beasts.Data;
 using Beasts.ExileCore;
 using ExileCore.PoEMemory.Components;
+using ExileCore.PoEMemory.Elements;
 using ExileCore.Shared.Enums;
 using ImGuiNET;
 using SharpDX;
@@ -15,6 +16,8 @@ namespace Beasts;
 
 public partial class Beasts
 {
+    private const int SEGMENTS_CIRCLE = 20;
+
     public override void Render()
     {
         DrawInGameBeasts();
@@ -30,13 +33,17 @@ public partial class Beasts
         {
             var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Metadata == beast.Path).First();
 
+            var beastColor = GetSpecialBeastColor(beast.DisplayName);
+
+            if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeast.Positioned.GridPosNum, beastColor);
+
             if (!Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
 
             var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
             if (!WorldPositionOnScreenBool(pos)) continue;
 
             Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), Color.White, FontAlign.Center);
-            DrawFilledCircleInWorldPosition(pos, 50, GetSpecialBeastColor(beast.DisplayName));
+            DrawFilledCircleInWorldPosition(pos, 50, beastColor);
         }
     }
 
@@ -67,6 +74,8 @@ public partial class Beasts
 
     private void DrawBestiaryPanel()
     {
+        return;
+
         var bestiary = GameController.IngameState.IngameUi.GetBestiaryPanel();
         if (bestiary == null || bestiary.IsVisible == false) return;
 
@@ -151,6 +160,48 @@ public partial class Beasts
 
         Graphics.DrawConvexPolyFilled(circlePoints.ToArray(), color with { A = Color.ToByte((int)((double)0.2f * byte.MaxValue)) });
         Graphics.DrawPolyLine(circlePoints.ToArray(), color, 2);
+    }
+
+    private void DrawLargeMap(string text, Vector2 gridPos, Color color)
+    {
+        if (!Settings.DrawOnMap.Value) return;
+
+        var map = GameController.Game.IngameState.IngameUi.Map;
+        var largeMap = map.LargeMap.AsObject<SubMap>();
+
+        if (!largeMap.IsVisible)
+            return;
+
+        var mapCenter = largeMap.MapCenter;
+        var mapScale = largeMap.MapScale;
+
+        var player = GameController.Game.IngameState.Data.LocalPlayer;
+        var playerPos = player.GetComponent<Positioned>()?.GridPosNum ?? default;
+
+        var delta = gridPos - new Vector2(playerPos.X, playerPos.Y);
+
+        const double cameraAngle = 38.7 * System.Math.PI / 180;
+        float cos = (float)System.Math.Cos(cameraAngle);
+        float sin = (float)System.Math.Sin(cameraAngle);
+
+        var mapOffset = mapScale * new Vector2((delta.X - delta.Y) * cos, -(delta.X + delta.Y) * sin);
+        var finalPos = mapCenter + mapOffset;
+
+        if (Settings.MapSettings.DrawPoint)
+        {
+            var finalPositon = new Vector2(finalPos.X, finalPos.Y);
+            Graphics.DrawCircle(
+                finalPositon,
+                Settings.MapSettings.Radius.Value * (mapScale / 2),
+                color with { A = (byte)Settings.MapSettings.Transparency },
+                Settings.MapSettings.Thickness.Value, SEGMENTS_CIRCLE);
+        }
+
+        if (Settings.MapSettings.DrawText)
+        {
+            var finalPosition = new Vector2(finalPos.X + Settings.MapSettings.OffsetX, finalPos.Y + Settings.MapSettings.OffsetY);
+            Graphics.DrawTextWithBackground(text, finalPosition, color, SharpDX.Color.Black);
+        }
     }
 
     private bool WorldPositionOnScreenBool(Vector3 worldPos, int edgeBounds = 70)
