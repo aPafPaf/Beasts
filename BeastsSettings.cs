@@ -125,11 +125,59 @@ public class BeastsSettings : ISettings
     [Menu("Map Settings")]
     public MapSettings MapSettings { get; set; } = new();
 
+    [Menu("Color Settings")]
+    public ColorSettings ColorSettings { get; set; } = new();
+
     [JsonIgnore] public CustomNode LastUpdated { get; set; }
 
     [JsonIgnore] public CustomNode BeastPicker { get; set; }
 }
 
+[Submenu(CollapsedByDefault = true)]
+public class ColorSettings
+{
+    [Menu("MapColorSettings")]
+    public MapColorSettings MapColorSettings { get; set; } = new();
+
+    [Menu("Custom colors")]
+    public ToggleNode CustomColors { get; set; } = new ToggleNode(false);
+
+    [Menu("TextColor")]
+    public ColorNode TextColor { get; set; } = Color.White;
+
+    [Menu("Vivid")]
+    public ColorNode VididColor { get; set; } = new Color(255, 250, 0);
+
+    [Menu("Wild")]
+    public ColorNode WildColor { get; set; } = new Color(255, 0, 235);
+
+    [Menu("Primal")]
+    public ColorNode PrimalColor { get; set; } = new Color(0, 245, 255);
+
+    [Menu("Fenumal")]
+    public ColorNode FenumalColor { get; set; } = new Color(0, 150, 40);
+
+    [Menu("Black")]
+    public ColorNode BlackColor { get; set; } = new Color(255, 255, 255);
+
+    [Menu("Normal")]
+    public ColorNode NormalColor { get; set; } = new(Color.Red);
+
+    public ButtonNode Default { get; set; } = new ButtonNode();
+}
+
+[Submenu(CollapsedByDefault = true)]
+public class MapColorSettings
+{
+    [Menu("Change color text")]
+    public ToggleNode ChangeColorText { get; set; } = new ToggleNode(false);
+
+    [Menu("Color text")]
+    public ColorNode ColorText { get; set; } = new(Color.White);
+
+    [Menu("Background color text")]
+    public ColorNode BackgroundColorText { get; set; } = new(Color.Black);
+}
 
 [Submenu(CollapsedByDefault = true)]
 public class MapSettings

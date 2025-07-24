@@ -33,7 +33,8 @@ public partial class Beasts
         {
             var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Metadata == beast.Path).First();
 
-            var beastColor = GetSpecialBeastColor(beast.DisplayName);
+            var beastType = GetBeastType(beast.DisplayName);
+            var beastColor = GetColorBeastByType(beastType);
 
             if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeast.Positioned.GridPosNum, beastColor);
 
@@ -42,34 +43,10 @@ public partial class Beasts
             var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
             if (!WorldPositionOnScreenBool(pos)) continue;
 
-            Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), Color.White, FontAlign.Center);
+            var colorText = Settings.ColorSettings.CustomColors.Value ? Settings.ColorSettings.TextColor.Value : Color.White;
+            Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), colorText, FontAlign.Center);
             DrawFilledCircleInWorldPosition(pos, 50, beastColor);
         }
-    }
-
-    private Color GetSpecialBeastColor(string beastName)
-    {
-        if (beastName.Contains("Vivid"))
-        {
-            return new Color(255, 250, 0);
-        }
-
-        if (beastName.Contains("Wild"))
-        {
-            return new Color(255, 0, 235);
-        }
-
-        if (beastName.Contains("Primal"))
-        {
-            return new Color(0, 245, 255);
-        }
-
-        if (beastName.Contains("Black"))
-        {
-            return new Color(255, 255, 255);
-        }
-
-        return Color.Red;
     }
 
     private void DrawBestiaryPanel()
@@ -199,8 +176,15 @@ public partial class Beasts
 
         if (Settings.MapSettings.DrawText)
         {
+            Color backgroundColor = Color.Black;
+            if (Settings.ColorSettings.MapColorSettings.ChangeColorText.Value)
+            {
+                color = Settings.ColorSettings.MapColorSettings.ColorText.Value;
+                backgroundColor = Settings.ColorSettings.MapColorSettings.BackgroundColorText.Value;
+            }
+
             var finalPosition = new Vector2(finalPos.X + Settings.MapSettings.OffsetX, finalPos.Y + Settings.MapSettings.OffsetY);
-            Graphics.DrawTextWithBackground(text, finalPosition, color, SharpDX.Color.Black);
+            Graphics.DrawTextWithBackground(text, finalPosition, color, backgroundColor);
         }
     }
 
@@ -221,5 +205,55 @@ public partial class Beasts
             height: windowRect.Height - (edgeBounds * 2));
 
         return rectBounds.Contains(result);
+    }
+
+    private Color GetColorBeastByType(BeastType type)
+    {
+        switch (type)
+        {
+            case BeastType.Vivid:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.VididColor : new Color(255, 250, 0);
+            case BeastType.Wild:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.WildColor : new Color(255, 0, 235);
+            case BeastType.Primal:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.PrimalColor : new Color(0, 245, 255);
+            case BeastType.Fenumal:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.FenumalColor : new Color(0, 150, 40);
+            case BeastType.Black:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.BlackColor : new Color(255, 255, 255);
+            default:
+                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.NormalColor : Color.Red;
+        }
+    }
+
+    private BeastType GetBeastType(string beastName)
+    {
+        if (string.IsNullOrEmpty(beastName)) return BeastType.Normal;
+
+        switch (beastName)
+        {
+            case string name when name.Contains("Vivid"):
+                return BeastType.Vivid;
+            case string name when name.Contains("Wild"):
+                return BeastType.Wild;
+            case string name when name.Contains("Primal"):
+                return BeastType.Primal;
+            case string name when name.Contains("Fenumal"):
+                return BeastType.Fenumal;
+            case string name when name.Contains("Black"):
+                return BeastType.Black;
+            default:
+                return BeastType.Normal;
+        }
+    }
+
+    enum BeastType
+    {
+        Normal,
+        Vivid,
+        Wild,
+        Primal,
+        Fenumal,
+        Black
     }
 }
