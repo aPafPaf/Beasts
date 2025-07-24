@@ -33,12 +33,12 @@ public partial class Beasts
         {
             var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Metadata == beast.Path).First();
 
+            if (!Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
+
             var beastType = GetBeastType(beast.DisplayName);
             var beastColor = GetColorBeastByType(beastType);
 
             if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeast.Positioned.GridPosNum, beastColor);
-
-            if (!Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
 
             var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
             if (!WorldPositionOnScreenBool(pos)) continue;
