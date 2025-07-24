@@ -51,8 +51,6 @@ public partial class Beasts
 
     private void DrawBestiaryPanel()
     {
-        return;
-
         var bestiary = GameController.IngameState.IngameUi.GetBestiaryPanel();
         if (bestiary == null || bestiary.IsVisible == false) return;
 
