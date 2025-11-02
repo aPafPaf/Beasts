@@ -21,7 +21,7 @@ public partial class Beasts
     public override void Render()
     {
         DrawInGameBeasts();
-        DrawBestiaryPanel();
+        //DrawBestiaryPanel();
         DrawBeastsWindow();
     }
 
