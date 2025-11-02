@@ -103,8 +103,9 @@ public partial class Beasts
 
                 ImGui.TableNextColumn();
 
-                if (!Settings.DrawCrafts.Value) continue;
                 ImGui.Text(beastMetadata.DisplayName);
+
+                if (!Settings.DrawCrafts.Value) continue;
                 foreach (var craft in beastMetadata.Crafts)
                 {
                     ImGui.Text(craft);
