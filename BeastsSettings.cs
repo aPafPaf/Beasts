@@ -119,8 +119,11 @@ public class BeastsSettings : ISettings
 
     public ButtonNode FetchBeastPrices { get; set; } = new ButtonNode();
 
-    [Menu("Draw on the map")]
-    public ToggleNode DrawOnMap { get; set; } = new(true);
+    [Menu("Draw On The Map")]
+    public ToggleNode DrawOnMap { get; set; } = new(true); 
+
+    [Menu("Draw Crafts Column")]
+    public ToggleNode DrawCrafts { get; set; } = new(true);
 
     [Menu("Map Settings")]
     public MapSettings MapSettings { get; set; } = new();
