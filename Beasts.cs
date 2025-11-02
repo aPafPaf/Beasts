@@ -6,6 +6,7 @@ using ExileCore.Shared.Enums;
 using SharpDX;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,13 +14,16 @@ namespace Beasts;
 
 public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
 {
-    private readonly Dictionary<long, Entity> _trackedBeasts = new();
+    private readonly Dictionary<long, string> _trackedBeasts = new();
+    private HashSet<string> _trackedBeastsMetadata = new();
 
     public override void OnLoad()
     {
         Settings.FetchBeastPrices.OnPressed += async () => await FetchPrices();
         Settings.FetchLeagues.OnPressed += async () => await FetchLeagues();
         Settings.ColorSettings.Default.OnPressed = ResetColor;
+
+        _trackedBeastsMetadata = BeastsDatabase.AllBeasts.Select(beast => beast.Path).ToHashSet();
 
         Task.Run(FetchPrices);
     }
@@ -61,13 +65,37 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
         _trackedBeasts.Clear();
     }
 
+    public override Job Tick()
+    {
+        foreach (var entity in GameController.Entities)
+        {
+            if (entity.Metadata == "11111")
+            {
+                LogMessage("sss");
+            }
+        }
+
+        foreach (var entity in GameController.Entities)
+        {
+            if (entity.Rarity != MonsterRarity.Rare) continue;
+            if (!entity.IsValid) continue;
+
+            if (_trackedBeastsMetadata.Contains(entity.Metadata))
+            {
+                _trackedBeasts.TryAdd(entity.Id, entity.Metadata);
+            }
+        }
+
+        return null;
+    }
+
     public override void EntityAdded(Entity entity)
     {
-        if (entity.Rarity != MonsterRarity.Rare) return;
-        foreach (var _ in BeastsDatabase.AllBeasts.Where(beast => entity.Metadata == beast.Path))
-        {
-            _trackedBeasts.Add(entity.Id, entity);
-        }
+        //if (entity.Rarity != MonsterRarity.Rare) return;
+        //foreach (var _ in BeastsDatabase.AllBeasts.Where(beast => entity.Metadata == beast.Path))
+        //{
+        //    _trackedBeasts.Add(entity.Id, entity);
+        //}
     }
 
     public override void EntityRemoved(Entity entity)

@@ -27,20 +27,21 @@ public partial class Beasts
 
     private void DrawInGameBeasts()
     {
-        foreach (var trackedBeast in _trackedBeasts
-                     .Select(beast => new { Positioned = beast.Value.GetComponent<Positioned>(), beast.Value.Metadata })
-                     .Where(beast => beast.Positioned != null))
+        foreach (var trackedBeast in _trackedBeasts)
         {
-            var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Metadata == beast.Path).First();
+            var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Value == beast.Path).FirstOrDefault();
 
-            if (!Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
+            if (beast is not null && !Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
+
+            var trackedBeastEntity = GameController.EntityListWrapper.Entities.FirstOrDefault(x => x.Id == trackedBeast.Key);
+            if (trackedBeastEntity is null || !trackedBeastEntity.IsValid) continue;
 
             var beastType = GetBeastType(beast.DisplayName);
             var beastColor = GetColorBeastByType(beastType);
 
-            if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeast.Positioned.GridPosNum, beastColor);
+            if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeastEntity.GridPosNum, beastColor);
 
-            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeast.Positioned.GridPosition);
+            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeastEntity.GridPosNum);
             if (!WorldPositionOnScreenBool(pos)) continue;
 
             var colorText = Settings.ColorSettings.CustomColors.Value ? Settings.ColorSettings.TextColor.Value : Color.White;
@@ -89,7 +90,7 @@ public partial class Beasts
 
             foreach (var beastMetadata in _trackedBeasts
                          .Select(trackedBeast => trackedBeast.Value)
-                         .Select(beast => Settings.Beasts.Find(b => b.Path == beast.Metadata))
+                         .Select(beast => Settings.Beasts.Find(b => b.Path == beast))
                          .Where(beastMetadata => beastMetadata != null))
             {
                 ImGui.TableNextRow();
