@@ -8,7 +8,6 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Vector2 = System.Numerics.Vector2;
 using Vector3 = System.Numerics.Vector3;
 
@@ -16,7 +15,8 @@ namespace Beasts;
 
 public partial class Beasts
 {
-    private const int SEGMENTS_CIRCLE = 20;
+    private const int CIRCLE_SEGMENTS = 15;
+    private static readonly Vector2[] s_circleBuffer = new Vector2[CIRCLE_SEGMENTS * 2];
 
     public override void Render()
     {
@@ -27,26 +27,39 @@ public partial class Beasts
 
     private void DrawInGameBeasts()
     {
-        foreach (var trackedBeast in _trackedBeasts)
+        foreach (var id in _trackedBeasts.Keys)
         {
-            var beast = BeastsDatabase.AllBeasts.Where(beast => trackedBeast.Value == beast.Path).FirstOrDefault();
+            var tracked = _trackedBeasts[id];
+            if (!_enabledBeastPaths.Contains(tracked.Beast.Path)) continue;
 
-            if (beast is not null && !Settings.Beasts.Any(b => b.Path == beast.Path)) continue;
+            var entity = tracked.Entity;
+            var isLive = entity.IsValid;
 
-            var trackedBeastEntity = GameController.EntityListWrapper.Entities.FirstOrDefault(x => x.Id == trackedBeast.Key);
-            if (trackedBeastEntity is null || !trackedBeastEntity.IsValid) continue;
+            if (isLive)
+            {
+                tracked.LastGridPos = entity.GridPosNum;
+                tracked.HasValidPos = true;
+            }
+            else if (!tracked.HasValidPos)
+            {
+                continue;
+            }
 
-            var beastType = GetBeastType(beast.DisplayName);
-            var beastColor = GetColorBeastByType(beastType);
+            var gridPos = tracked.LastGridPos;
+            var beastColor = GetColorBeastByType(tracked.Type);
+            if (!isLive) beastColor.A = (byte)(beastColor.A * 0.35f);
 
-            if (Settings.DrawOnMap.Value) DrawLargeMap(beast.DisplayName, trackedBeastEntity.GridPosNum, beastColor);
+            if (Settings.DrawOnMap.Value) DrawLargeMap(tracked.Beast.DisplayName, gridPos, beastColor);
 
-            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(trackedBeastEntity.GridPosNum);
+            var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(gridPos);
             if (!WorldPositionOnScreenBool(pos)) continue;
 
             var colorText = Settings.ColorSettings.CustomColors.Value ? Settings.ColorSettings.TextColor.Value : Color.White;
-            Graphics.DrawText(beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), colorText, FontAlign.Center);
+            if (!isLive) colorText.A = (byte)(colorText.A * 0.35f);
+            Graphics.DrawText(tracked.Beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), colorText, FontAlign.Center);
             DrawFilledCircleInWorldPosition(pos, 50, beastColor);
+
+            _trackedBeasts[id] = tracked;
         }
     }
 
@@ -88,13 +101,11 @@ public partial class Beasts
             ImGui.TableSetupColumn("Price", ImGuiTableColumnFlags.WidthFixed, 48);
             ImGui.TableSetupColumn("Beast");
 
-            foreach (var beastMetadata in _trackedBeasts
-                         .Select(trackedBeast => trackedBeast.Value)
-                         .Select(beast => Settings.Beasts.Find(b => b.Path == beast))
-                         .Where(beastMetadata => beastMetadata != null))
+            for (var i = 0; i < _trackedBeastRows.Count; i++)
             {
-                ImGui.TableNextRow();
+                var beastMetadata = _trackedBeastRows[i];
 
+                ImGui.TableNextRow();
                 ImGui.TableNextColumn();
 
                 ImGui.Text(Settings.BeastPrices.TryGetValue(beastMetadata.DisplayName, out var price)
@@ -106,9 +117,9 @@ public partial class Beasts
                 ImGui.Text(beastMetadata.DisplayName);
 
                 if (!Settings.DrawCrafts.Value) continue;
-                foreach (var craft in beastMetadata.Crafts)
+                for (var j = 0; j < beastMetadata.Crafts.Length; j++)
                 {
-                    ImGui.Text(craft);
+                    ImGui.Text(beastMetadata.Crafts[j]);
                 }
             }
             ImGui.EndTable();
@@ -119,25 +130,22 @@ public partial class Beasts
 
     private void DrawFilledCircleInWorldPosition(Vector3 position, float radius, Color color)
     {
-        var circlePoints = new List<Vector2>();
-        const int segments = 15;
-        const float segmentAngle = 2f * MathF.PI / segments;
+        const float segmentAngle = 2f * MathF.PI / CIRCLE_SEGMENTS;
+        var camera = GameController.IngameState.Camera;
+        var fillColor = color with { A = Color.ToByte((int)(0.2f * byte.MaxValue)) };
 
-        for (var i = 0; i < segments; i++)
+        for (var i = 0; i < CIRCLE_SEGMENTS; i++)
         {
             var angle = i * segmentAngle;
             var currentOffset = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * radius;
             var nextOffset = new Vector2(MathF.Cos(angle + segmentAngle), MathF.Sin(angle + segmentAngle)) * radius;
 
-            var currentWorldPos = position + new Vector3(currentOffset, 0);
-            var nextWorldPos = position + new Vector3(nextOffset, 0);
-
-            circlePoints.Add(GameController.Game.IngameState.Camera.WorldToScreen(currentWorldPos));
-            circlePoints.Add(GameController.Game.IngameState.Camera.WorldToScreen(nextWorldPos));
+            s_circleBuffer[i * 2] = camera.WorldToScreen(position + new Vector3(currentOffset, 0));
+            s_circleBuffer[i * 2 + 1] = camera.WorldToScreen(position + new Vector3(nextOffset, 0));
         }
 
-        Graphics.DrawConvexPolyFilled(circlePoints.ToArray(), color with { A = Color.ToByte((int)((double)0.2f * byte.MaxValue)) });
-        Graphics.DrawPolyLine(circlePoints.ToArray(), color, 2);
+        Graphics.DrawConvexPolyFilled(s_circleBuffer, fillColor);
+        Graphics.DrawPolyLine(s_circleBuffer, color, 2);
     }
 
     private void DrawLargeMap(string text, Vector2 gridPos, Color color)
@@ -172,7 +180,7 @@ public partial class Beasts
                 finalPositon,
                 Settings.MapSettings.Radius.Value * (mapScale / 2),
                 color with { A = (byte)Settings.MapSettings.Transparency },
-                Settings.MapSettings.Thickness.Value, SEGMENTS_CIRCLE);
+                Settings.MapSettings.Thickness.Value, CIRCLE_SEGMENTS);
         }
 
         if (Settings.MapSettings.DrawText)
@@ -191,61 +199,51 @@ public partial class Beasts
 
     private bool WorldPositionOnScreenBool(Vector3 worldPos, int edgeBounds = 70)
     {
-        var windowRect = GameController.Window.GetWindowRectangle();
+        var rect = GameController.Window.GetWindowRectangle();
         var screenPos = GameController.IngameState.Camera.WorldToScreen(worldPos);
 
-        windowRect.X -= windowRect.Location.X;
-        windowRect.Y -= windowRect.Location.Y;
-
-        var result = GameController.Window.ScreenToClient((int)screenPos.X, (int)screenPos.Y) + GameController.Window.GetWindowRectangle().Location;
-
-        var rectBounds = new SharpDX.RectangleF(
-            x: windowRect.X + edgeBounds,
-            y: windowRect.Y + edgeBounds,
-            width: windowRect.Width - (edgeBounds * 2),
-            height: windowRect.Height - (edgeBounds * 2));
-
-        return rectBounds.Contains(result);
+        return screenPos.X >= rect.X + edgeBounds
+            && screenPos.X <= rect.X + rect.Width - edgeBounds
+            && screenPos.Y >= rect.Y + edgeBounds
+            && screenPos.Y <= rect.Y + rect.Height - edgeBounds;
     }
 
     private Color GetColorBeastByType(BeastType type)
     {
-        switch (type)
+        if (!Settings.ColorSettings.CustomColors.Value)
         {
-            case BeastType.Vivid:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.VididColor : new Color(255, 250, 0);
-            case BeastType.Wild:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.WildColor : new Color(255, 0, 235);
-            case BeastType.Primal:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.PrimalColor : new Color(0, 245, 255);
-            case BeastType.Fenumal:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.FenumalColor : new Color(0, 150, 40);
-            case BeastType.Black:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.BlackColor : new Color(255, 255, 255);
-            default:
-                return Settings.ColorSettings.CustomColors ? Settings.ColorSettings.NormalColor : Color.Red;
+            return type switch
+            {
+                BeastType.Vivid => new Color(255, 250, 0),
+                BeastType.Wild => new Color(255, 0, 235),
+                BeastType.Primal => new Color(0, 245, 255),
+                BeastType.Fenumal => new Color(0, 150, 40),
+                BeastType.Black => new Color(255, 255, 255),
+                _ => Color.Red,
+            };
         }
+
+        return type switch
+        {
+            BeastType.Vivid => Settings.ColorSettings.VididColor.Value,
+            BeastType.Wild => Settings.ColorSettings.WildColor.Value,
+            BeastType.Primal => Settings.ColorSettings.PrimalColor.Value,
+            BeastType.Fenumal => Settings.ColorSettings.FenumalColor.Value,
+            BeastType.Black => Settings.ColorSettings.BlackColor.Value,
+            _ => Settings.ColorSettings.NormalColor.Value,
+        };
     }
 
     private BeastType GetBeastType(string beastName)
     {
         if (string.IsNullOrEmpty(beastName)) return BeastType.Normal;
 
-        switch (beastName)
-        {
-            case string name when name.Contains("Vivid"):
-                return BeastType.Vivid;
-            case string name when name.Contains("Wild"):
-                return BeastType.Wild;
-            case string name when name.Contains("Primal"):
-                return BeastType.Primal;
-            case string name when name.Contains("Fenumal"):
-                return BeastType.Fenumal;
-            case string name when name.Contains("Black"):
-                return BeastType.Black;
-            default:
-                return BeastType.Normal;
-        }
+        if (beastName.Contains("Vivid")) return BeastType.Vivid;
+        if (beastName.Contains("Wild")) return BeastType.Wild;
+        if (beastName.Contains("Primal")) return BeastType.Primal;
+        if (beastName.Contains("Fenumal")) return BeastType.Fenumal;
+        if (beastName.Contains("Black")) return BeastType.Black;
+        return BeastType.Normal;
     }
 
     enum BeastType

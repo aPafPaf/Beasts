@@ -9,13 +9,17 @@ using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Beasts;
 
 public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
 {
-    private readonly Dictionary<long, string> _trackedBeasts = new();
+    private readonly Dictionary<long, TrackedBeast> _trackedBeasts = new();
     private HashSet<string> _trackedBeastsMetadata = new();
+    private Dictionary<string, Beast> _beastsByPath = new();
+    private HashSet<string> _enabledBeastPaths = new();
+    private readonly List<Beast> _trackedBeastRows = new();
 
     public override void OnLoad()
     {
@@ -33,6 +37,7 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
         Task.Run(FetchLeagues);
 
         _trackedBeastsMetadata = BeastsDatabase.AllBeasts.Select(beast => beast.Path).ToHashSet();
+        _beastsByPath = BeastsDatabase.AllBeasts.ToDictionary(beast => beast.Path, beast => beast);
 
         LogMessage($"FetchPrices: {Settings.CurrentLeague.Value}");
         Task.Run(FetchPrices);
@@ -68,27 +73,30 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
     public override void AreaChange(AreaInstance area)
     {
         _trackedBeasts.Clear();
+        _trackedBeastRows.Clear();
     }
 
     public override Job Tick()
     {
-        foreach (var entity in GameController.Entities)
+        _enabledBeastPaths.Clear();
+        foreach (var b in Settings.Beasts)
+            _enabledBeastPaths.Add(b.Path);
+
+        _trackedBeastRows.Clear();
+        foreach (var tracked in _trackedBeasts.Values)
         {
-            if (entity.Metadata == "11111")
-            {
-                LogMessage("sss");
-            }
+            if (_enabledBeastPaths.Contains(tracked.Beast.Path))
+                _trackedBeastRows.Add(tracked.Beast);
         }
 
         foreach (var entity in GameController.Entities)
         {
             if (entity.Rarity != MonsterRarity.Rare) continue;
             if (!entity.IsValid) continue;
+            if (!_beastsByPath.TryGetValue(entity.Metadata, out var beast)) continue;
+            if (_trackedBeasts.ContainsKey(entity.Id)) continue;
 
-            if (_trackedBeastsMetadata.Contains(entity.Metadata))
-            {
-                _trackedBeasts.TryAdd(entity.Id, entity.Metadata);
-            }
+            _trackedBeasts[entity.Id] = new TrackedBeast(entity, beast, GetBeastType(beast.DisplayName));
         }
 
         return null;
@@ -96,18 +104,33 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
 
     public override void EntityAdded(Entity entity)
     {
-        //if (entity.Rarity != MonsterRarity.Rare) return;
-        //foreach (var _ in BeastsDatabase.AllBeasts.Where(beast => entity.Metadata == beast.Path))
-        //{
-        //    _trackedBeasts.Add(entity.Id, entity);
-        //}
+        if (entity is null) return;
+        if (entity.Rarity != MonsterRarity.Rare) return;
+        if (!_beastsByPath.TryGetValue(entity.Metadata, out var beast)) return;
+
+        _trackedBeasts[entity.Id] = new TrackedBeast(entity, beast, GetBeastType(beast.DisplayName));
     }
 
     public override void EntityRemoved(Entity entity)
     {
-        if (_trackedBeasts.ContainsKey(entity.Id))
+        _trackedBeasts.Remove(entity.Id);
+    }
+
+    private struct TrackedBeast
+    {
+        public Entity Entity;
+        public Beast Beast;
+        public BeastType Type;
+        public Vector2 LastGridPos;
+        public bool HasValidPos;
+
+        public TrackedBeast(Entity entity, Beast beast, BeastType type)
         {
-            _trackedBeasts.Remove(entity.Id);
+            Entity = entity;
+            Beast = beast;
+            Type = type;
+            LastGridPos = default;
+            HasValidPos = false;
         }
     }
 }
