@@ -114,6 +114,7 @@ public class BeastsSettings : ISettings
 
     [Menu("League", "League name from poe ninja")]
     public ListNode League { get; set; } = new ListNode();
+    public TextNode CurrentLeague { get; set; } = new TextNode("Mirage");
 
     public ButtonNode FetchLeagues { get; set; } = new ButtonNode();
 

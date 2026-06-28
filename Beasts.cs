@@ -23,8 +23,18 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
         Settings.FetchLeagues.OnPressed += async () => await FetchLeagues();
         Settings.ColorSettings.Default.OnPressed = ResetColor;
 
+        Settings.League.OnValueSelected += selectedUrl =>
+        {
+            Settings.CurrentLeague.SetValueNoEvent(selectedUrl);
+            PoeNinja.SetLeague(Settings.CurrentLeague.Value);
+        };
+
+        PoeNinja.SetLeague(Settings.CurrentLeague.Value);
+        Task.Run(FetchLeagues);
+
         _trackedBeastsMetadata = BeastsDatabase.AllBeasts.Select(beast => beast.Path).ToHashSet();
 
+        LogMessage($"FetchPrices: {Settings.CurrentLeague.Value}");
         Task.Run(FetchPrices);
     }
 
@@ -42,11 +52,6 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
     {
         var urls = await LeagueUrlExtractor.GetAllLeagueUrls();
         Settings.League.SetListValues(urls);
-
-        // Устанавливаем обработчик выбора значения
-        Settings.League.OnValueSelected += selectedUrl =>
-        {
-        };
     }
 
     private async Task FetchPrices()
