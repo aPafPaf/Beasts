@@ -91,7 +91,11 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
 
         foreach (var entity in GameController.Entities)
         {
-            if (entity.Rarity != MonsterRarity.Rare) continue;
+            if (entity.Rarity is MonsterRarity.White 
+                || entity.Rarity is MonsterRarity.Magic
+                || entity.Rarity is MonsterRarity.Error)
+                continue;
+
             if (!entity.IsValid) continue;
             if (!_beastsByPath.TryGetValue(entity.Metadata, out var beast)) continue;
             if (_trackedBeasts.ContainsKey(entity.Id)) continue;
