@@ -103,7 +103,7 @@ public static class BeastsDatabase
         },
         new Beast
         {
-            DisplayName = "Craicic Chimeral",
+            DisplayName = "Craicic Croaker",
             Path = "Metadata/Monsters/LeagueBestiary/GemFrogBestiary",
             Crafts =
             [

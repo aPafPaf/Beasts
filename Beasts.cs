@@ -37,7 +37,11 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
         Task.Run(FetchLeagues);
 
         _trackedBeastsMetadata = BeastsDatabase.AllBeasts.Select(beast => beast.Path).ToHashSet();
-        _beastsByPath = BeastsDatabase.AllBeasts.ToDictionary(beast => beast.Path, beast => beast);
+        // Some beasts are renamed between patches but keep the same metadata path,
+        // so the database may contain aliases. Pick one entry per path instead of throwing.
+        _beastsByPath = BeastsDatabase.AllBeasts
+            .GroupBy(beast => beast.Path)
+            .ToDictionary(group => group.Key, group => group.First());
 
         LogMessage($"FetchPrices: {Settings.CurrentLeague.Value}");
         Task.Run(FetchPrices);

@@ -44,20 +44,23 @@ public class BeastsSettings : ISettings
                         sortedBeasts = sortedColumn switch
                         {
                             0 => sortAscending ? [.. sortedBeasts.OrderBy(b => Beasts.Any(eb => eb.Path == b.Path))] : [.. sortedBeasts.OrderByDescending(b => Beasts.Any(eb => eb.Path == b.Path))],
-                            1 => sortAscending ? [.. sortedBeasts.OrderBy(b => BeastPrices[b.DisplayName])] : [.. sortedBeasts.OrderByDescending(b => BeastPrices[b.DisplayName])],
+                            1 => sortAscending ? [.. sortedBeasts.OrderBy(b => BeastPrices.GetValueOrDefault(b.DisplayName))] : [.. sortedBeasts.OrderByDescending(b => BeastPrices.GetValueOrDefault(b.DisplayName))],
                             2 => sortAscending ? [.. sortedBeasts.OrderBy(b => b.DisplayName)] : [.. sortedBeasts.OrderByDescending(x => x.DisplayName)],
                             3 => sortAscending ? [.. sortedBeasts.OrderBy(b => b.Crafts[0])] : [.. sortedBeasts.OrderByDescending(x => x.Crafts[0])],
                             _ => sortAscending ? [.. sortedBeasts.OrderBy(b => b.DisplayName)] : [.. sortedBeasts.OrderByDescending(x => x.DisplayName)]
                         };
                     }
 
-                    foreach (var beast in sortedBeasts)
+                    for (var row = 0; row < sortedBeasts.Count; row++)
                     {
+                        var beast = sortedBeasts[row];
+
                         ImGui.TableNextRow();
                         ImGui.TableNextColumn();
 
                         var isChecked = Beasts.Any(eb => eb.Path == beast.Path);
-                        if (ImGui.Checkbox($"##{beast.Path}", ref isChecked))
+                        // Index-based ID keeps widgets unique even when two entries share a path.
+                        if (ImGui.Checkbox($"##{beast.Path}##{row}", ref isChecked))
                         {
                             if (isChecked)
                             {
