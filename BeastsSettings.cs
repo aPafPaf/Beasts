@@ -1,212 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using Beasts.Data;
-using ExileCore.Shared.Attributes;
-using ExileCore.Shared.Helpers;
 using ExileCore.Shared.Interfaces;
 using ExileCore.Shared.Nodes;
-using ImGuiNET;
 using Newtonsoft.Json;
 using SharpDX;
 
 namespace Beasts;
 
+/// <summary>
+/// Данные настроек без UI-обёрток: единственная нода здесь — Enable, её рисует HUD
+/// (PluginWrapper.IsEnable). Всё остальное — обычные значения, UI рисует
+/// <see cref="Beasts.DrawSettings"/>.
+/// </summary>
 public class BeastsSettings : ISettings
 {
+    public ToggleNode Enable { get; set; } = new ToggleNode(false);
+
     public List<Beast> Beasts { get; set; } = new();
     public Dictionary<string, float> BeastPrices { get; set; } = new();
     public DateTime LastUpdate { get; set; } = DateTime.MinValue;
 
-    public BeastsSettings()
-    {
-        BeastPicker = new CustomNode
-        {
-            DrawDelegate = () =>
-            {
-                ImGui.Separator();
-                if (ImGui.BeginTable("BeastsTable", 4, ImGuiTableFlags.Resizable | ImGuiTableFlags.Reorderable | ImGuiTableFlags.Sortable | ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersOuter | ImGuiTableFlags.BordersV | ImGuiTableFlags.NoBordersInBody | ImGuiTableFlags.ScrollY))
-                {
-                    ImGui.TableSetupColumn("Enabled", ImGuiTableColumnFlags.WidthFixed, 24);
-                    ImGui.TableSetupColumn("Price", ImGuiTableColumnFlags.WidthFixed, 48);
-                    ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthFixed, 256);
-                    ImGui.TableSetupColumn("Description", ImGuiTableColumnFlags.WidthStretch);
-                    ImGui.TableSetupScrollFreeze(0, 1);
-                    ImGui.TableHeadersRow();
+    // лига poe.ninja: выбранная + список, который приезжает из api.pathofexile.com
+    public string League { get; set; } = "Mirage";
+    [JsonIgnore] public List<string> Leagues { get; set; } = new();
 
-                    var sortedBeasts = BeastsDatabase.AllBeasts;
-                    if (ImGui.TableGetSortSpecs() is { SpecsDirty: true } sortSpecs)
-                    {
-                        int sortedColumn = sortSpecs.Specs.ColumnIndex;
-                        var sortAscending = sortSpecs.Specs.SortDirection == ImGuiSortDirection.Ascending;
+    // отображение
+    public bool DrawOnMap { get; set; } = true;
+    public bool DrawCrafts { get; set; } = true;
 
-                        sortedBeasts = sortedColumn switch
-                        {
-                            0 => sortAscending ? [.. sortedBeasts.OrderBy(b => Beasts.Any(eb => eb.Path == b.Path))] : [.. sortedBeasts.OrderByDescending(b => Beasts.Any(eb => eb.Path == b.Path))],
-                            1 => sortAscending ? [.. sortedBeasts.OrderBy(b => BeastPrices.GetValueOrDefault(b.DisplayName))] : [.. sortedBeasts.OrderByDescending(b => BeastPrices.GetValueOrDefault(b.DisplayName))],
-                            2 => sortAscending ? [.. sortedBeasts.OrderBy(b => b.DisplayName)] : [.. sortedBeasts.OrderByDescending(x => x.DisplayName)],
-                            3 => sortAscending ? [.. sortedBeasts.OrderBy(b => b.Crafts[0])] : [.. sortedBeasts.OrderByDescending(x => x.Crafts[0])],
-                            _ => sortAscending ? [.. sortedBeasts.OrderBy(b => b.DisplayName)] : [.. sortedBeasts.OrderByDescending(x => x.DisplayName)]
-                        };
-                    }
+    // цены талисманов (json собирает tools/fetch_talisman_prices.py)
+    public string TalismanPricesPath { get; set; } = @"tools\talisman_prices.json";
 
-                    for (var row = 0; row < sortedBeasts.Count; row++)
-                    {
-                        var beast = sortedBeasts[row];
-
-                        ImGui.TableNextRow();
-                        ImGui.TableNextColumn();
-
-                        var isChecked = Beasts.Any(eb => eb.Path == beast.Path);
-                        // Index-based ID keeps widgets unique even when two entries share a path.
-                        if (ImGui.Checkbox($"##{beast.Path}##{row}", ref isChecked))
-                        {
-                            if (isChecked)
-                            {
-                                Beasts.Add(beast);
-                            }
-                            else
-                            {
-                                Beasts.RemoveAll(eb => eb.Path == beast.Path);
-                            }
-                        }
-
-                        if (isChecked)
-                        {
-                            ImGui.PushStyleColor(ImGuiCol.Text, Color.Green.ToImguiVec4());
-                        }
-
-                        ImGui.TableNextColumn();
-                        ImGui.Text(BeastPrices.TryGetValue(beast.DisplayName, out var price) ? $"{price}c" : "0c");
-
-                        ImGui.TableNextColumn();
-                        ImGui.Text(beast.DisplayName);
-
-                        ImGui.TableNextColumn();
-                        // display all the crafts for the beast seperated by newline
-                        foreach (var craft in beast.Crafts)
-                        {
-                            ImGui.Text(craft);
-                        }
-
-                        if (isChecked)
-                        {
-                            ImGui.PopStyleColor();
-                        }
-
-                        ImGui.NextColumn();
-                    }
-                    ImGui.EndTable();
-                }
-            }
-        };
-
-        LastUpdated = new CustomNode
-        {
-            DrawDelegate = () =>
-            {
-                ImGui.Text("PoeNinja prices as of:");
-                ImGui.SameLine();
-                ImGui.Text(LastUpdate.ToString("HH:mm:ss"));
-            }
-        };
-    }
-
-    public ToggleNode Enable { get; set; } = new ToggleNode(false);
-
-    [Menu("League", "League name from poe ninja")]
-    public ListNode League { get; set; } = new ListNode();
-    public TextNode CurrentLeague { get; set; } = new TextNode("Mirage");
-
-    public ButtonNode FetchLeagues { get; set; } = new ButtonNode();
-
-    public ButtonNode FetchBeastPrices { get; set; } = new ButtonNode();
-
-    [Menu("Draw On The Map")]
-    public ToggleNode DrawOnMap { get; set; } = new(true); 
-
-    [Menu("Draw Crafts Column")]
-    public ToggleNode DrawCrafts { get; set; } = new(true);
-
-    [Menu("Map Settings")]
     public MapSettings MapSettings { get; set; } = new();
-
-    [Menu("Color Settings")]
     public ColorSettings ColorSettings { get; set; } = new();
-
-    [JsonIgnore] public CustomNode LastUpdated { get; set; }
-
-    [JsonIgnore] public CustomNode BeastPicker { get; set; }
 }
 
-[Submenu(CollapsedByDefault = true)]
 public class ColorSettings
 {
-    [Menu("MapColorSettings")]
     public MapColorSettings MapColorSettings { get; set; } = new();
 
-    [Menu("Custom colors")]
-    public ToggleNode CustomColors { get; set; } = new ToggleNode(false);
+    public bool CustomColors { get; set; }
+    public Color TextColor { get; set; } = Color.White;
 
-    [Menu("TextColor")]
-    public ColorNode TextColor { get; set; } = Color.White;
-
-    [Menu("Vivid")]
-    public ColorNode VididColor { get; set; } = new Color(255, 250, 0);
-
-    [Menu("Wild")]
-    public ColorNode WildColor { get; set; } = new Color(255, 0, 235);
-
-    [Menu("Primal")]
-    public ColorNode PrimalColor { get; set; } = new Color(0, 245, 255);
-
-    [Menu("Fenumal")]
-    public ColorNode FenumalColor { get; set; } = new Color(0, 150, 40);
-
-    [Menu("Black")]
-    public ColorNode BlackColor { get; set; } = new Color(255, 255, 255);
-
-    [Menu("Normal")]
-    public ColorNode NormalColor { get; set; } = new(Color.Red);
-
-    public ButtonNode Default { get; set; } = new ButtonNode();
+    public Color VididColor { get; set; } = new Color(255, 250, 0);
+    public Color WildColor { get; set; } = new Color(255, 0, 235);
+    public Color PrimalColor { get; set; } = new Color(0, 245, 255);
+    public Color FenumalColor { get; set; } = new Color(0, 150, 40);
+    public Color BlackColor { get; set; } = new Color(255, 255, 255);
+    public Color NormalColor { get; set; } = Color.Red;
 }
 
-[Submenu(CollapsedByDefault = true)]
 public class MapColorSettings
 {
-    [Menu("Change color text")]
-    public ToggleNode ChangeColorText { get; set; } = new ToggleNode(false);
-
-    [Menu("Color text")]
-    public ColorNode ColorText { get; set; } = new(Color.White);
-
-    [Menu("Background color text")]
-    public ColorNode BackgroundColorText { get; set; } = new(Color.Black);
+    public bool ChangeColorText { get; set; }
+    public Color ColorText { get; set; } = Color.White;
+    public Color BackgroundColorText { get; set; } = Color.Black;
 }
 
-[Submenu(CollapsedByDefault = true)]
 public class MapSettings
 {
-    [Menu("Draw point")]
-    public ToggleNode DrawPoint { get; set; } = new ToggleNode(true);
+    public bool DrawPoint { get; set; } = true;
+    public bool DrawText { get; set; } = true;
 
-    [Menu("Draw text")]
-    public ToggleNode DrawText { get; set; } = new ToggleNode(true);
-
-    [Menu("Transparency ")]
-    public RangeNode<int> Transparency { get; set; } = new RangeNode<int>(255, 0, 255);
-
-    [Menu("Radius")]
-    public RangeNode<int> Radius { get; set; } = new RangeNode<int>(30, 0, 255);
-
-    [Menu("Thickness")]
-    public RangeNode<int> Thickness { get; set; } = new RangeNode<int>(5, 0, 30);
-
-    [Menu("Offset Text X")]
-    public RangeNode<int> OffsetX { get; set; } = new RangeNode<int>(0, -100, 100);
-
-    [Menu("Offset Text Y")]
-    public RangeNode<int> OffsetY { get; set; } = new RangeNode<int>(0, -100, 100);
+    public int Transparency { get; set; } = 255;
+    public int Radius { get; set; } = 30;
+    public int Thickness { get; set; } = 5;
+    public int OffsetX { get; set; }
+    public int OffsetY { get; set; }
 }

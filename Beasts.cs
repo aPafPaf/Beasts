@@ -23,18 +23,9 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
 
     public override void OnLoad()
     {
-        Settings.FetchBeastPrices.OnPressed += async () => await FetchPrices();
-        Settings.FetchLeagues.OnPressed += async () => await FetchLeagues();
-        Settings.ColorSettings.Default.OnPressed = ResetColor;
-
-        Settings.League.OnValueSelected += selectedUrl =>
-        {
-            Settings.CurrentLeague.SetValueNoEvent(selectedUrl);
-            PoeNinja.SetLeague(Settings.CurrentLeague.Value);
-        };
-
-        PoeNinja.SetLeague(Settings.CurrentLeague.Value);
+        PoeNinja.SetLeague(Settings.League);
         Task.Run(FetchLeagues);
+        LoadTalismanPrices();
 
         _trackedBeastsMetadata = BeastsDatabase.AllBeasts.Select(beast => beast.Path).ToHashSet();
         // Some beasts are renamed between patches but keep the same metadata path,
@@ -43,24 +34,73 @@ public partial class Beasts : BaseSettingsPlugin<BeastsSettings>
             .GroupBy(beast => beast.Path)
             .ToDictionary(group => group.Key, group => group.First());
 
-        LogMessage($"FetchPrices: {Settings.CurrentLeague.Value}");
+        // Saved settings keep a copy of the beast entries, so refresh them from the database
+        // to pick up updated crafts and talisman data after a patch.
+        for (var i = 0; i < Settings.Beasts.Count; i++)
+        {
+            if (_beastsByPath.TryGetValue(Settings.Beasts[i].Path, out var actualBeast))
+                Settings.Beasts[i] = actualBeast;
+        }
+
+        LogMessage($"FetchPrices: {Settings.League}");
         Task.Run(FetchPrices);
     }
 
+    /// <summary>
+    /// Единственный источник дефолтных цветов — инициализаторы <see cref="ColorSettings"/>,
+    /// поэтому сброс просто копирует свежий экземпляр (без второй копии палитры).
+    /// </summary>
     private void ResetColor()
     {
-        Settings.ColorSettings.VididColor.Value = new Color(255, 250, 0);
-        Settings.ColorSettings.WildColor.Value = new Color(255, 0, 235);
-        Settings.ColorSettings.PrimalColor.Value = new Color(0, 245, 255);
-        Settings.ColorSettings.FenumalColor.Value = new Color(0, 150, 40);
-        Settings.ColorSettings.BlackColor.Value = new Color(255, 255, 255);
-        Settings.ColorSettings.NormalColor.Value = Color.Red;
+        var defaults = new ColorSettings();
+
+        Settings.ColorSettings.CustomColors = defaults.CustomColors;
+        Settings.ColorSettings.TextColor = defaults.TextColor;
+        Settings.ColorSettings.VididColor = defaults.VididColor;
+        Settings.ColorSettings.WildColor = defaults.WildColor;
+        Settings.ColorSettings.PrimalColor = defaults.PrimalColor;
+        Settings.ColorSettings.FenumalColor = defaults.FenumalColor;
+        Settings.ColorSettings.BlackColor = defaults.BlackColor;
+        Settings.ColorSettings.NormalColor = defaults.NormalColor;
+
+        Settings.ColorSettings.MapColorSettings.ChangeColorText = defaults.MapColorSettings.ChangeColorText;
+        Settings.ColorSettings.MapColorSettings.ColorText = defaults.MapColorSettings.ColorText;
+        Settings.ColorSettings.MapColorSettings.BackgroundColorText = defaults.MapColorSettings.BackgroundColorText;
     }
+
+    private bool _talismanPricesLoaded;
+    private string _talismanPriceError;
+
+    private void LoadTalismanPrices()
+    {
+        try
+        {
+            var pluginDir = string.IsNullOrWhiteSpace(DirectoryFullName) ? AppContext.BaseDirectory : DirectoryFullName;
+            _talismanPricesLoaded = TalismanPrices.Load(Settings.TalismanPricesPath, pluginDir, out var error);
+            _talismanPriceError = _talismanPricesLoaded ? null : error;
+
+            if (!_talismanPricesLoaded)
+                DebugWindow.LogMsg($"[Beasts] talisman prices: {error}", 5, Color.Orange);
+        }
+        catch (Exception ex)
+        {
+            _talismanPricesLoaded = false;
+            _talismanPriceError = ex.Message;
+            DebugWindow.LogMsg($"[Beasts] talisman prices: {ex.Message}", 5, Color.Red);
+        }
+    }
+
+    public bool TalismanPricesLoaded => _talismanPricesLoaded;
+
+    public string TalismanPriceError => _talismanPriceError;
 
     private async Task FetchLeagues()
     {
         var urls = await LeagueUrlExtractor.GetAllLeagueUrls();
-        Settings.League.SetListValues(urls);
+        Settings.Leagues = urls;
+
+        if (urls.Count > 0 && !urls.Contains(Settings.League))
+            SetLeague(urls[0]);
     }
 
     private async Task FetchPrices()

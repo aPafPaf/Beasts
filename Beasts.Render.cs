@@ -1,4 +1,5 @@
-﻿using Beasts.Data;
+using Beasts.Api;
+using Beasts.Data;
 using Beasts.ExileCore;
 using ExileCore.PoEMemory.Components;
 using ExileCore.PoEMemory.Elements;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Vector2 = System.Numerics.Vector2;
 using Vector3 = System.Numerics.Vector3;
+using Vector4 = System.Numerics.Vector4;
 
 namespace Beasts;
 
@@ -49,12 +51,12 @@ public partial class Beasts
             var beastColor = GetColorBeastByType(tracked.Type);
             if (!isLive) beastColor.A = (byte)(beastColor.A * 0.35f);
 
-            if (Settings.DrawOnMap.Value) DrawLargeMap(tracked.Beast.DisplayName, gridPos, beastColor);
+            if (Settings.DrawOnMap) DrawLargeMap(tracked.Beast.DisplayName, gridPos, beastColor);
 
             var pos = GameController.IngameState.Data.ToWorldWithTerrainHeight(gridPos);
             if (!WorldPositionOnScreenBool(pos)) continue;
 
-            var colorText = Settings.ColorSettings.CustomColors.Value ? Settings.ColorSettings.TextColor.Value : Color.White;
+            var colorText = Settings.ColorSettings.CustomColors ? Settings.ColorSettings.TextColor : Color.White;
             if (!isLive) colorText.A = (byte)(colorText.A * 0.35f);
             Graphics.DrawText(tracked.Beast.DisplayName, GameController.IngameState.Camera.WorldToScreen(pos), colorText, FontAlign.Center);
             DrawFilledCircleInWorldPosition(pos, 50, beastColor);
@@ -108,18 +110,29 @@ public partial class Beasts
                 ImGui.TableNextRow();
                 ImGui.TableNextColumn();
 
-                ImGui.Text(Settings.BeastPrices.TryGetValue(beastMetadata.DisplayName, out var price)
+                ImGui.TextUnformatted(Settings.BeastPrices.TryGetValue(beastMetadata.DisplayName, out var price)
                     ? $"{price.ToString(CultureInfo.InvariantCulture)}c"
                     : "0c");
 
                 ImGui.TableNextColumn();
 
-                ImGui.Text(beastMetadata.DisplayName);
+                ImGui.TextUnformatted(beastMetadata.DisplayName);
 
-                if (!Settings.DrawCrafts.Value) continue;
+                if (!Settings.DrawCrafts) continue;
                 for (var j = 0; j < beastMetadata.Crafts.Length; j++)
                 {
-                    ImGui.Text(beastMetadata.Crafts[j]);
+                    ImGui.TextUnformatted(beastMetadata.Crafts[j]);
+                }
+
+                if (!string.IsNullOrEmpty(beastMetadata.DropsTalisman))
+                {
+                    var talismanPrice = TalismanPrices.ForBeast(beastMetadata.Path);
+                    var priceText = talismanPrice is { HasPrice: true }
+                        ? $" · {talismanPrice.MedianChaos:0.##}c"
+                        : string.Empty;
+
+                    TextColored(new Vector4(1f, 0.85f, 0.25f, 1f),
+                        $"Talisman: {beastMetadata.DropsTalisman}{priceText}");
                 }
             }
             ImGui.EndTable();
@@ -150,7 +163,7 @@ public partial class Beasts
 
     private void DrawLargeMap(string text, Vector2 gridPos, Color color)
     {
-        if (!Settings.DrawOnMap.Value) return;
+        if (!Settings.DrawOnMap) return;
 
         var map = GameController.Game.IngameState.IngameUi.Map;
         var largeMap = map.LargeMap.AsObject<SubMap>();
@@ -178,18 +191,18 @@ public partial class Beasts
             var finalPositon = new Vector2(finalPos.X, finalPos.Y);
             Graphics.DrawCircle(
                 finalPositon,
-                Settings.MapSettings.Radius.Value * (mapScale / 2),
+                Settings.MapSettings.Radius * (mapScale / 2),
                 color with { A = (byte)Settings.MapSettings.Transparency },
-                Settings.MapSettings.Thickness.Value, CIRCLE_SEGMENTS);
+                Settings.MapSettings.Thickness, CIRCLE_SEGMENTS);
         }
 
         if (Settings.MapSettings.DrawText)
         {
             Color backgroundColor = Color.Black;
-            if (Settings.ColorSettings.MapColorSettings.ChangeColorText.Value)
+            if (Settings.ColorSettings.MapColorSettings.ChangeColorText)
             {
-                color = Settings.ColorSettings.MapColorSettings.ColorText.Value;
-                backgroundColor = Settings.ColorSettings.MapColorSettings.BackgroundColorText.Value;
+                color = Settings.ColorSettings.MapColorSettings.ColorText;
+                backgroundColor = Settings.ColorSettings.MapColorSettings.BackgroundColorText;
             }
 
             var finalPosition = new Vector2(finalPos.X + Settings.MapSettings.OffsetX, finalPos.Y + Settings.MapSettings.OffsetY);
@@ -210,7 +223,7 @@ public partial class Beasts
 
     private Color GetColorBeastByType(BeastType type)
     {
-        if (!Settings.ColorSettings.CustomColors.Value)
+        if (!Settings.ColorSettings.CustomColors)
         {
             return type switch
             {
@@ -225,12 +238,12 @@ public partial class Beasts
 
         return type switch
         {
-            BeastType.Vivid => Settings.ColorSettings.VididColor.Value,
-            BeastType.Wild => Settings.ColorSettings.WildColor.Value,
-            BeastType.Primal => Settings.ColorSettings.PrimalColor.Value,
-            BeastType.Fenumal => Settings.ColorSettings.FenumalColor.Value,
-            BeastType.Black => Settings.ColorSettings.BlackColor.Value,
-            _ => Settings.ColorSettings.NormalColor.Value,
+            BeastType.Vivid => Settings.ColorSettings.VididColor,
+            BeastType.Wild => Settings.ColorSettings.WildColor,
+            BeastType.Primal => Settings.ColorSettings.PrimalColor,
+            BeastType.Fenumal => Settings.ColorSettings.FenumalColor,
+            BeastType.Black => Settings.ColorSettings.BlackColor,
+            _ => Settings.ColorSettings.NormalColor,
         };
     }
 

@@ -1,0 +1,2581 @@
+{
+  "schema": 1,
+  "generated_at": "2026-11-15T11:26:42+00:00",
+  "league": "Covens",
+  "status": "available",
+  "currency_rates": {
+    "chaos": 1.0,
+    "accelerating-catalyst": 0.68,
+    "blessed": 0.2371,
+    "abrasive-catalyst": 0.6507,
+    "alch": 0.0141,
+    "alt": 0.0731,
+    "ancient-orb": 2.44,
+    "annul": 4.62,
+    "aug": 0.0421,
+    "awakeners-orb": 113.4,
+    "bauble": 2.23,
+    "chance": 0.4301,
+    "divine": 108.8,
+    "elders-exalted-orb": 29.81,
+    "eldritch-chaos-orb": 21.19,
+    "eldritch-exalted-orb": 2.6,
+    "eldritch-orb-of-annulment": 13.22,
+    "enkindling-orb": 0.5945,
+    "exalted": 0.4729,
+    "exceptional-eldritch-ichor": 8.77,
+    "fertile-catalyst": 3.42,
+    "fracturing-orb": 282.5,
+    "fracturing-shard": 12.43,
+    "fusing": 0.2218,
+    "grand-eldritch-ember": 1.04,
+    "grand-eldritch-ichor": 2.08,
+    "greater-eldritch-ember": 0.4608,
+    "greater-eldritch-ichor": 1.65,
+    "hinekoras-lock": 3083.0,
+    "imbued-catalyst": 0.5309,
+    "instilling-orb": 1.78,
+    "intrinsic-catalyst": 0.7392,
+    "jewellers": 0.048,
+    "lesser-eldritch-ember": 0.6116,
+    "lesser-eldritch-ichor": 1.51,
+    "mavens-chisel-of-avarice": 8.33,
+    "mavens-chisel-of-threads": 2.17,
+    "orb-of-conflict": 24.99,
+    "orb-of-intention": 1.0,
+    "orb-of-remembrance": 21.02,
+    "orb-of-unmaking": 0.2483,
+    "orb-of-unravelling": 15.53,
+    "primal-lifeforce": 0.01,
+    "redeemers-exalted-orb": 30.27,
+    "reflecting-mist": 568.8,
+    "regal": 0.2734,
+    "regret": 1.85,
+    "sacred-lifeforce": 7.12,
+    "sandswept-lifeforce": 35.05,
+    "scour": 0.8235,
+    "scrap": 0.1406,
+    "shapers-exalted-orb": 102.9,
+    "soul-core-of-finesse": 260.9,
+    "soul-core-of-instability": 131.1,
+    "tainted-blacksmiths-whetstone": 0.5549,
+    "tainted-exalted-orb": 6.91,
+    "tainted-orb-of-fusing": 33.56,
+    "tempering-catalyst": 0.8569,
+    "turbulent-catalyst": 1.43,
+    "veiled-exalted-orb": 330.0,
+    "vivid-lifeforce": 0.009,
+    "wild-lifeforce": 0.0083,
+    "chrome": 0.4648,
+    "cluster-fog": 104.4,
+    "crusaders-exalted-orb": 56.77,
+    "dextral-catalyst": 7.12,
+    "soul-core-of-might": 272.1,
+    "exceptional-eldritch-ember": 8.43,
+    "flesh-of-xesht": 47.23,
+    "foulborn-exalted-orb": 166.8,
+    "foulborn-orb-of-augmentation": 3.62,
+    "foulborn-regal-orb": 14.34,
+    "gcp": 1.68,
+    "hunters-exalted-orb": 80.16,
+    "mavens-chisel-of-divination": 3.75,
+    "mavens-chisel-of-procurement": 6.17,
+    "mavens-chisel-of-proliferation": 3.87,
+    "mavens-orb": 77.81,
+    "mirror": 15029.0,
+    "mirror-shard": 1644.0,
+    "noxious-catalyst": 1.7,
+    "portal": 0.0235,
+    "prismatic-catalyst": 4.13,
+    "rogues-marker": 0.0011,
+    "sacred-orb": 10.7,
+    "sinistral-catalyst": 2.0,
+    "soul-core-of-intellect": 279.6,
+    "stacked-deck": 0.9729,
+    "tailoring-orb": 34.96,
+    "tainted-armourers-scrap": 1.29,
+    "tainted-catalyst": 2.97,
+    "tainted-chaos-orb": 2.72,
+    "tainted-chromatic-orb": 1.71,
+    "tainted-divine-orb": 50.16,
+    "tainted-divine-teardrop": 34.29,
+    "tainted-jewellers-orb": 1.97,
+    "tainted-mythic-orb": 4.48,
+    "tempering-orb": 45.32,
+    "transmute": 0.0231,
+    "unstable-catalyst": 3.3,
+    "vaal": 0.5216,
+    "veiled-chaos-orb": 4.86,
+    "warlords-exalted-orb": 98.25,
+    "whetstone": 0.07,
+    "wisdom": 0.0082
+  },
+  "talismans": [
+    {
+      "base": "Chieftain Talisman",
+      "level": 1,
+      "enchant": "16% increased Area of Effect",
+      "beast": "Farric Chieftain",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/BestiaryMonkeyChiefBlood",
+      "total": 802,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 1.0,
+      "max_chaos": 1.29,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 60,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:11:14Z",
+          "account": "pwikePoE#4110",
+          "ign": "Myssing_Splinters",
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "chance",
+          "chaos": 1.29,
+          "rarity": "rare",
+          "ilvl": 29,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:45:49Z",
+          "account": "LetMeStruggle#3763",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T15:27:30Z",
+          "account": "ss202500#4094",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:32+00:00",
+      "error": null
+    },
+    {
+      "base": "Chimeral Talisman",
+      "level": 1,
+      "enchant": "30% increased Projectile Speed",
+      "beast": "Saqawine Chimeral",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/IguanaBestiary",
+      "total": 683,
+      "listings_count": 3,
+      "min_chaos": 0.03,
+      "median_chaos": 0.14,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.03,
+          "median_chaos": 0.14
+        }
+      },
+      "listings": [
+        {
+          "price": 2.0,
+          "currency": "alch",
+          "chaos": 0.03,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:06:44Z",
+          "account": "shoxx04#1056",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 10.0,
+          "currency": "alch",
+          "chaos": 0.14,
+          "rarity": "rare",
+          "ilvl": 75,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:27:06Z",
+          "account": "dawgman#2809",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T00:56:58Z",
+          "account": "moshesh1995#6438",
+          "ign": "TsubaCovensSC",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:33+00:00",
+      "error": null
+    },
+    {
+      "base": "Devourer Talisman",
+      "level": 1,
+      "enchant": "Damage Penetrates 15% Fire Resistance",
+      "beast": "Fenumal Devourer",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/RootSpiderBestiary_",
+      "total": 738,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.03,
+      "max_chaos": 0.04,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.03
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 74,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:26:28Z",
+          "account": "UV4v5sYbXvZVMhb8#1726",
+          "ign": "おひとりさま弐限定",
+          "status": "offline"
+        },
+        {
+          "price": 2.0,
+          "currency": "alch",
+          "chaos": 0.03,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:23:47Z",
+          "account": "SkeetzPOE#6593",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "alch",
+          "chaos": 0.04,
+          "rarity": "rare",
+          "ilvl": 51,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:25:02Z",
+          "account": "Fluffy_Batman#4442",
+          "ign": "ShockingUnholySticks",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:34+00:00",
+      "error": null
+    },
+    {
+      "base": "Gargantuan Talisman",
+      "level": 1,
+      "enchant": "15% increased maximum Life",
+      "beast": "Farric Gargantuan",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/BeastCaveBestiary",
+      "total": 1162,
+      "listings_count": 3,
+      "min_chaos": 0.06,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.06,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 4.0,
+          "currency": "alch",
+          "chaos": 0.06,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T19:29:34Z",
+          "account": "SkeetzPOE#6593",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:27:44Z",
+          "account": "Rodriggr#7698",
+          "ign": "GildoBouncesOnIt",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 29,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:26:50Z",
+          "account": "Manoloco2001#0941",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:45+00:00",
+      "error": null
+    },
+    {
+      "base": "Goatman Talisman",
+      "level": 1,
+      "enchant": "Hits ignore Enemy Physical Damage Reduction",
+      "beast": "Farric Goatman",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/GoatmanLeapSlamBestiary",
+      "total": 795,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 42,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:47:27Z",
+          "account": "infernien#1029",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 23,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:33:31Z",
+          "account": "BrianXxX#7879",
+          "ign": "AAASiphone",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 57,
+          "corrupted": false,
+          "indexed": "2026-11-14T18:33:10Z",
+          "account": "Esurah#2368",
+          "ign": "ChaosAndNightDefineYou",
+          "status": "online"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:46+00:00",
+      "error": null
+    },
+    {
+      "base": "Goliath Talisman",
+      "level": 1,
+      "enchant": "Projectiles Pierce 3 additional Targets",
+      "beast": "Farric Goliath",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/BestiarySpiker",
+      "total": 1124,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-15T03:56:16Z",
+          "account": "minh1491#4828",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 52,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:08:15Z",
+          "account": "Paddy1096#5812",
+          "ign": "PaddyDomination",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 47,
+          "corrupted": true,
+          "indexed": "2026-11-15T07:59:55Z",
+          "account": "BORSH23#7948",
+          "ign": "molotochekbit",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:47+00:00",
+      "error": null
+    },
+    {
+      "base": "Plagued Arachnid Talisman",
+      "level": 1,
+      "enchant": "35% increased Effect of Withered",
+      "beast": "Fenumal Plagued Arachnid",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SpiderPlagueBestiary",
+      "total": 38,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 3.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-14T19:29:51Z",
+          "account": "KOROTYCH#7697",
+          "ign": "JUGSLAMMER",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:39:06Z",
+          "account": "JarWaASi#8282",
+          "ign": "樹林烤雞腿",
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "chaos",
+          "chaos": 3.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:50:17Z",
+          "account": "Paranoia_666#3337",
+          "ign": "BeastThreadsEnjoyer",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:58+00:00",
+      "error": null
+    },
+    {
+      "base": "Rhoa Talisman",
+      "level": 1,
+      "enchant": "Gain 15% of Maximum Life as Extra Armour",
+      "beast": "Saqawine Rhoa",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/RhoaBestiary",
+      "total": 869,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 18,
+          "corrupted": false,
+          "indexed": "2026-11-14T14:10:56Z",
+          "account": "funomania#0679",
+          "ign": "abbala",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 17,
+          "corrupted": false,
+          "indexed": "2026-11-14T08:50:21Z",
+          "account": "OMGWhatTheFox#6223",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 40,
+          "corrupted": false,
+          "indexed": "2026-11-14T21:00:47Z",
+          "account": "MrTeatimeYT#3443",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:11:59+00:00",
+      "error": null
+    },
+    {
+      "base": "Sand Spitter Talisman",
+      "level": 1,
+      "enchant": "12% increased Movement Speed",
+      "beast": "Craicic Sand Spitter",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SandSpitterBestiary",
+      "total": 969,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.04,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 48,
+          "corrupted": false,
+          "indexed": "2026-11-15T04:32:04Z",
+          "account": "Superdude911#0738",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 63,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:07:02Z",
+          "account": "Fenrakk101#3693",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "alch",
+          "chaos": 0.04,
+          "rarity": "rare",
+          "ilvl": 17,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:11:25Z",
+          "account": "Kleptoscorp#5215",
+          "ign": "Legazill",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:12:35+00:00",
+      "error": null
+    },
+    {
+      "base": "Savage Crab Talisman",
+      "level": 1,
+      "enchant": "Damage Penetrates 15% Cold Resistance",
+      "beast": "Craicic Savage Crab",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/CrabParasiteLargeBestiary_",
+      "total": 901,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 80,
+          "corrupted": false,
+          "indexed": "2026-11-14T22:03:34Z",
+          "account": "GameErik#6301",
+          "ign": "Igniterik",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 23,
+          "corrupted": false,
+          "indexed": "2026-11-15T03:54:09Z",
+          "account": "Burnsismir#6597",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 17,
+          "corrupted": false,
+          "indexed": "2026-11-14T01:18:18Z",
+          "account": "Tyrael_xx#2737",
+          "ign": "Shinno_Umbra",
+          "status": "online"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:12:36+00:00",
+      "error": null
+    },
+    {
+      "base": "Shield Crab Talisman",
+      "level": 1,
+      "enchant": "30% increased Global Defences",
+      "beast": "Craicic Shield Crab",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/ShieldCrabBestiary",
+      "total": 999,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 16,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:49:06Z",
+          "account": "closedsockets#8076",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 18,
+          "corrupted": false,
+          "indexed": "2026-11-14T12:21:35Z",
+          "account": "halffull90#4569",
+          "ign": "Tempest_Wolf",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 17,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:58:26Z",
+          "account": "Germy321#4644",
+          "ign": "CecilofBaron",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:16:35+00:00",
+      "error": null
+    },
+    {
+      "base": "Squid Talisman",
+      "level": 1,
+      "enchant": "30% increased maximum Mana",
+      "beast": "Craicic Squid",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SeaWitchSpawnBestiary",
+      "total": 419,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:45:23Z",
+          "account": "elcorredor#0890",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 79,
+          "corrupted": false,
+          "indexed": "2026-11-14T07:27:32Z",
+          "account": "Kethis#4709",
+          "ign": "Kethis_CoU",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:01:34Z",
+          "account": "CloudCow#7753",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:16:36+00:00",
+      "error": null
+    },
+    {
+      "base": "Watcher Talisman",
+      "level": 1,
+      "enchant": "Damage Penetrates 15% Lightning Resistance",
+      "beast": "Craicic Watcher",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SquidBestiary",
+      "total": 632,
+      "listings_count": 3,
+      "min_chaos": 0.07,
+      "median_chaos": 0.14,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.07,
+          "median_chaos": 0.14
+        }
+      },
+      "listings": [
+        {
+          "price": 5.0,
+          "currency": "alch",
+          "chaos": 0.07,
+          "rarity": "rare",
+          "ilvl": 78,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:54:28Z",
+          "account": "dawgman#2809",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 10.0,
+          "currency": "alch",
+          "chaos": 0.14,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:58:48Z",
+          "account": "tobi726390z#3692",
+          "ign": "Cov_Inteleon",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T20:44:06Z",
+          "account": "Minamoo#0606",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:16:37+00:00",
+      "error": null
+    },
+    {
+      "base": "Wolf Alpha Talisman",
+      "level": 1,
+      "enchant": "+40% to Global Critical Strike Multiplier",
+      "beast": "Farric Wolf Alpha",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/WolfBestiary",
+      "total": 732,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:09:37Z",
+          "account": "DurumEE#2577",
+          "ign": "Covens_Lua",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 80,
+          "corrupted": false,
+          "indexed": "2026-11-14T18:27:04Z",
+          "account": "LordGunnari#2629",
+          "ign": "Swordaxestorm",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:48:08Z",
+          "account": "DoKSolero#0220",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:16:48+00:00",
+      "error": null
+    },
+    {
+      "base": "Ape Talisman",
+      "level": 28,
+      "enchant": "+1 to Minimum Endurance, Frenzy and Power Charges",
+      "beast": "Farric Ape",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/MonkeyBloodBestiary",
+      "total": 331,
+      "listings_count": 3,
+      "min_chaos": 0.07,
+      "median_chaos": 0.07,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.07,
+          "median_chaos": 0.07
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alt",
+          "chaos": 0.07,
+          "rarity": "rare",
+          "ilvl": 65,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:51:39Z",
+          "account": "Cuzamalive#3286",
+          "ign": "Гаубродящий",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alt",
+          "chaos": 0.07,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-14T23:58:10Z",
+          "account": "maihua#7113",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:33:25Z",
+          "account": "Кунизавр#2342",
+          "ign": "КВАСЫЧЕВ",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:16:49+00:00",
+      "error": null
+    },
+    {
+      "base": "Black Widow Talisman",
+      "level": 28,
+      "enchant": "Utility Flasks gain 2 Charges every 3 seconds",
+      "beast": "Fenumal Widow",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/Spider5Bestiary",
+      "total": 920,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.14,
+      "max_chaos": 0.86,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.14
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": true,
+          "indexed": "2026-11-15T05:59:21Z",
+          "account": "Esquired#0234",
+          "ign": "bghklgkytiyiiyo",
+          "status": "offline"
+        },
+        {
+          "price": 2.0,
+          "currency": "chance",
+          "chaos": 0.86,
+          "rarity": "rare",
+          "ilvl": 31,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:52:51Z",
+          "account": "WingsOfSable#3887",
+          "ign": "SHPEEDEE",
+          "status": "offline"
+        },
+        {
+          "price": 10.0,
+          "currency": "alch",
+          "chaos": 0.14,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T18:37:27Z",
+          "account": "taikalanne#2543",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:00+00:00",
+      "error": null
+    },
+    {
+      "base": "Blood Viper Talisman",
+      "level": 28,
+      "enchant": "20% increased Cooldown Recovery Rate",
+      "beast": "Saqawine Blood Viper",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SnakeBestiary2",
+      "total": 835,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T15:40:23Z",
+          "account": "am961557#6928",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 51,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:19:30Z",
+          "account": "LichkingT5#4497",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 66,
+          "corrupted": true,
+          "indexed": "2026-11-15T10:39:12Z",
+          "account": "artem220984#4842",
+          "ign": "Детонатор_Ковенов_Умбри",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:01+00:00",
+      "error": null
+    },
+    {
+      "base": "Carrion Queen Talisman",
+      "level": 28,
+      "enchant": "+1 to maximum number of Spectres",
+      "beast": "Fenumal Queen",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/InsectSpawnerBestiary",
+      "total": 1210,
+      "listings_count": 3,
+      "min_chaos": 0.14,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.14,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 10.0,
+          "currency": "alch",
+          "chaos": 0.14,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:37:27Z",
+          "account": "ngyclol#2703",
+          "ign": "Purrpie",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 40,
+          "corrupted": false,
+          "indexed": "2026-11-14T15:59:42Z",
+          "account": "Shollot0322#7024",
+          "ign": "柚直咪的呆毛",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": true,
+          "indexed": "2026-11-15T08:56:54Z",
+          "account": "k3W8#5905",
+          "ign": "КОРОВА_БЕБРА",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:02+00:00",
+      "error": null
+    },
+    {
+      "base": "Cobra Talisman",
+      "level": 28,
+      "enchant": "+1 to Maximum Frenzy Charges",
+      "beast": "Saqawine Cobra",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SnakeBestiary1",
+      "total": 1868,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "normal": {
+          "count": 1,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        },
+        "rare": {
+          "count": 2,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:46:27Z",
+          "account": "iColere#2833",
+          "ign": "JuteurDauras",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:49:22Z",
+          "account": "ApE_EmPeROR#4861",
+          "ign": "Prussian_Blue",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "normal",
+          "ilvl": 39,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:01:58Z",
+          "account": "Monsterlort#4841",
+          "ign": "TalkativeOrbdeep",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:38+00:00",
+      "error": null
+    },
+    {
+      "base": "Flame Hellion Talisman",
+      "level": 28,
+      "enchant": "+4% to maximum Fire Resistance",
+      "beast": "Farric Flame Hellion Alpha",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/HellionBestiary",
+      "total": 531,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T19:17:39Z",
+          "account": "skjaldmo_o#4906",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 79,
+          "corrupted": false,
+          "indexed": "2026-11-14T21:53:10Z",
+          "account": "Saltylemons_34#4953",
+          "ign": "AAAAAAAAAAAAAAAA_V",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T11:32:15Z",
+          "account": "Leo777870#3214",
+          "ign": "НЕДОСТОЙНЫЙ_ПРЕТЕНДЕНТ",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:39+00:00",
+      "error": null
+    },
+    {
+      "base": "Frost Hellion Talisman",
+      "level": 28,
+      "enchant": "+4% to maximum Cold Resistance",
+      "beast": "Farric Frost Hellion Alpha",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/HellionBestiary2",
+      "total": 248,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 74,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:18:06Z",
+          "account": "UV4v5sYbXvZVMhb8#1726",
+          "ign": "おひとりさま弐限定",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 78,
+          "corrupted": false,
+          "indexed": "2026-11-14T22:19:51Z",
+          "account": "maestro2people#0948",
+          "ign": "Dillidllinx",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T00:46:36Z",
+          "account": "joaofwv#3975",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:50+00:00",
+      "error": null
+    },
+    {
+      "base": "Lynx Talisman",
+      "level": 28,
+      "enchant": "+4% to maximum Lightning Resistance",
+      "beast": "Farric Lynx Alpha",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/LynxBestiary",
+      "total": 397,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T00:27:39Z",
+          "account": "CtmExile#3638",
+          "ign": "blAdEmiNiONfour",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 79,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:17:24Z",
+          "account": "EVOCRUSH#1013",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:09:34Z",
+          "account": "SimeonMoros#1880",
+          "ign": "Шелковница",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:51+00:00",
+      "error": null
+    },
+    {
+      "base": "Magma Hound Talisman",
+      "level": 28,
+      "enchant": "Unaffected by Ignite",
+      "beast": "Farric Magma Hound",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/HoundBestiary",
+      "total": 276,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:10:55Z",
+          "account": "Micros231#5952",
+          "ign": "GazGazovik",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-14T18:15:21Z",
+          "account": "RedHatNL#5116",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 74,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:06:57Z",
+          "account": "13974932133#0263",
+          "ign": "你二大爷",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:17:52+00:00",
+      "error": null
+    },
+    {
+      "base": "Pitbull Talisman",
+      "level": 28,
+      "enchant": "Warcries Exert 1 additional Attack",
+      "beast": "Farric Pit Hound",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/PitbullBestiary",
+      "total": 193,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 80,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:59:05Z",
+          "account": "MaybeLater42#5669",
+          "ign": "Стас_Шуршун",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": true,
+          "indexed": "2026-11-15T08:51:40Z",
+          "account": "poehaven#1091",
+          "ign": "izlycb",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-14T08:25:02Z",
+          "account": "marcin020#1736",
+          "ign": "Arisek",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:18:03+00:00",
+      "error": null
+    },
+    {
+      "base": "Retch Talisman",
+      "level": 28,
+      "enchant": "+1 to Maximum Power Charges",
+      "beast": "Saqawine Retch",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/KiwethBestiary",
+      "total": 2036,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 23,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:34:09Z",
+          "account": "Blucka#0789",
+          "ign": "LindsayClancyDidnothing",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 47,
+          "corrupted": false,
+          "indexed": "2026-11-14T20:08:30Z",
+          "account": "lamsone#4140",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 53,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:12:19Z",
+          "account": "StxndAlxne#3655",
+          "ign": "Tuatituati",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:18:04+00:00",
+      "error": null
+    },
+    {
+      "base": "Scorpion Talisman",
+      "level": 28,
+      "enchant": "+20% to Damage over Time Multiplier",
+      "beast": "Fenumal Scorpion",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/BlackScorpionBestiary",
+      "total": 1119,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T22:08:36Z",
+          "account": "zemtsov2000#7699",
+          "ign": "Sho_ti_takoe",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T12:24:57Z",
+          "account": "T4V1#6789",
+          "ign": "DommyMommyOfInspiring",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:21:39Z",
+          "account": "phenten#2306",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:21:38+00:00",
+      "error": null
+    },
+    {
+      "base": "Scrabbler Talisman",
+      "level": 28,
+      "enchant": "+2 to Level of all Herald Skill Gems",
+      "beast": "Fenumal Scrabbler",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SandLeaperBestiary",
+      "total": 1261,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.07,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 56,
+          "corrupted": false,
+          "indexed": "2026-11-14T17:04:30Z",
+          "account": "fpcards#2812",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:10:41Z",
+          "account": "patchoulli#4887",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alt",
+          "chaos": 0.07,
+          "rarity": "rare",
+          "ilvl": 47,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:15:36Z",
+          "account": "BuzzMike#4122",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:21:39+00:00",
+      "error": null
+    },
+    {
+      "base": "Taurus Talisman",
+      "level": 28,
+      "enchant": "+1 to Maximum Endurance Charges",
+      "beast": "Farric Taurus",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/BestiaryBull",
+      "total": 1477,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:18:05Z",
+          "account": "Skuggfaxes#0405",
+          "ign": "GrimfaxeReliq",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-14T16:53:54Z",
+          "account": "Erebus38#7079",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-14T14:46:18Z",
+          "account": "SenRey#6202",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:21:40+00:00",
+      "error": null
+    },
+    {
+      "base": "Ursa Talisman",
+      "level": 28,
+      "enchant": "30% increased Effect of your Marks",
+      "beast": "Farric Ursa",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/DropBearBestiary",
+      "total": 749,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 0.01,
+      "max_chaos": 0.01,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 0.01
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 50,
+          "corrupted": false,
+          "indexed": "2026-11-15T04:24:16Z",
+          "account": "Blucka#0789",
+          "ign": "LindsayClancyDidnothing",
+          "status": "online"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 21,
+          "corrupted": false,
+          "indexed": "2026-11-15T03:47:33Z",
+          "account": "Veritatis_Cupitor_119#5562",
+          "ign": "KineticFusillabe",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:15:43Z",
+          "account": "bvnsz#4726",
+          "ign": "cyklonturbulencja",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:21:51+00:00",
+      "error": null
+    },
+    {
+      "base": "Croaker Talisman",
+      "level": 36,
+      "enchant": "+1 to Level of all Skill Gems",
+      "beast": "Craicic Croaker",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/GemFrogBestiary",
+      "total": 288,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:03:30Z",
+          "account": "zazemelie#5397",
+          "ign": "Covcovcov",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 73,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:16:25Z",
+          "account": "jinchenya#8891",
+          "ign": "只敢蹲八十",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:17:41Z",
+          "account": "GreenSpandex#3038",
+          "ign": "CovenSpandex",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:21:52+00:00",
+      "error": null
+    },
+    {
+      "base": "Great Maw Talisman",
+      "level": 36,
+      "enchant": "15% increased Attributes",
+      "beast": "Craicic Maw",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/FrogBestiary",
+      "total": 57,
+      "listings_count": 3,
+      "min_chaos": 2.0,
+      "median_chaos": 3.0,
+      "max_chaos": 5.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 2.0,
+          "median_chaos": 3.0
+        }
+      },
+      "listings": [
+        {
+          "price": 2.0,
+          "currency": "chaos",
+          "chaos": 2.0,
+          "rarity": "rare",
+          "ilvl": 84,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:37:07Z",
+          "account": "Burguitos#6190",
+          "ign": "OtraVezAPonerPvtoNombre",
+          "status": "online"
+        },
+        {
+          "price": 3.0,
+          "currency": "chaos",
+          "chaos": 3.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:13:49Z",
+          "account": "manonlake#6577",
+          "ign": "xiulianwusuiyue",
+          "status": "online"
+        },
+        {
+          "price": 5.0,
+          "currency": "chaos",
+          "chaos": 5.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": true,
+          "indexed": "2026-11-15T10:44:31Z",
+          "account": "BrunoPoE#2667",
+          "ign": "EuclidesCalopsita",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:03+00:00",
+      "error": null
+    },
+    {
+      "base": "Hybrid Arachnid Talisman",
+      "level": 36,
+      "enchant": "Minions have +30% to Damage over Time Multiplier",
+      "beast": "Fenumal Hybrid Arachnid",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SpiderPlatedBestiary",
+      "total": 47,
+      "listings_count": 3,
+      "min_chaos": 5.0,
+      "median_chaos": 5.0,
+      "max_chaos": 7.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 5.0,
+          "median_chaos": 5.0
+        }
+      },
+      "listings": [
+        {
+          "price": 5.0,
+          "currency": "chaos",
+          "chaos": 5.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:11:08Z",
+          "account": "Caspeerr#5884",
+          "ign": "去世的祖父",
+          "status": "online"
+        },
+        {
+          "price": 5.0,
+          "currency": "chaos",
+          "chaos": 5.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:11:08Z",
+          "account": "Caspeerr#5884",
+          "ign": "去世的祖父",
+          "status": "online"
+        },
+        {
+          "price": 7.0,
+          "currency": "chaos",
+          "chaos": 7.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T01:02:33Z",
+          "account": "Rhydori#0773",
+          "ign": "tempzxccvboiuqwe",
+          "status": "online"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:04+00:00",
+      "error": null
+    },
+    {
+      "base": "Octopus Talisman",
+      "level": 36,
+      "enchant": "20% chance to Freeze Enemies for 1 second when they Hit you",
+      "beast": "Craicic Vassal",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/ParasiticSquidBestiary",
+      "total": 24,
+      "listings_count": 3,
+      "min_chaos": 2.0,
+      "median_chaos": 3.0,
+      "max_chaos": 4.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 2.0,
+          "median_chaos": 3.0
+        }
+      },
+      "listings": [
+        {
+          "price": 2.0,
+          "currency": "chaos",
+          "chaos": 2.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:12:28Z",
+          "account": "godstein#5299",
+          "ign": "Godstein_SS_Covens",
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "chaos",
+          "chaos": 3.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:14:20Z",
+          "account": "Richard_90#1389",
+          "ign": "RichardMELMEL",
+          "status": "offline"
+        },
+        {
+          "price": 4.0,
+          "currency": "chaos",
+          "chaos": 4.0,
+          "rarity": "rare",
+          "ilvl": 81,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:37:37Z",
+          "account": "Coheed522#5537",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:05+00:00",
+      "error": null
+    },
+    {
+      "base": "Rhex Talisman",
+      "level": 36,
+      "enchant": "100% of Cold and Lightning Damage from Hits taken as Fire Damage",
+      "beast": "Saqawine Rhex",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/Avians/MarakethBirdBestiary",
+      "total": 100,
+      "listings_count": 3,
+      "min_chaos": 250.0,
+      "median_chaos": 330.0,
+      "max_chaos": 330.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 250.0,
+          "median_chaos": 330.0
+        }
+      },
+      "listings": [
+        {
+          "price": 250.0,
+          "currency": "chaos",
+          "chaos": 250.0,
+          "rarity": "rare",
+          "ilvl": 74,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:17:33Z",
+          "account": "Gojo#7400",
+          "ign": "MANAMAN__S",
+          "status": "offline"
+        },
+        {
+          "price": 330.0,
+          "currency": "chaos",
+          "chaos": 330.0,
+          "rarity": "rare",
+          "ilvl": 78,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:17:33Z",
+          "account": "Der_ViTRoX#4967",
+          "ign": "KnifeUser",
+          "status": "offline"
+        },
+        {
+          "price": 330.0,
+          "currency": "chaos",
+          "chaos": 330.0,
+          "rarity": "rare",
+          "ilvl": 78,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:17:33Z",
+          "account": "Der_ViTRoX#4967",
+          "ign": "KnifeUser",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:42+00:00",
+      "error": null
+    },
+    {
+      "base": "Spider Crab Talisman",
+      "level": 36,
+      "enchant": "+15% to Quality of all Skill Gems",
+      "beast": "Craicic Spider Crab",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/CrabSpiderBestiary",
+      "total": 118,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 78,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:06:44Z",
+          "account": "darkxtremist#5460",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 77,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:24:42Z",
+          "account": "Granhildr#4144",
+          "ign": "어쌔ㅁㅓㅇㅕ",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:28:23Z",
+          "account": "poehaven#1091",
+          "ign": "izlycb",
+          "status": "online"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:43+00:00",
+      "error": null
+    },
+    {
+      "base": "Tiger Talisman",
+      "level": 36,
+      "enchant": "8% increased Action Speed",
+      "beast": "Farric Tiger Alpha",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/TigerBestiary",
+      "total": 116,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 83,
+          "corrupted": false,
+          "indexed": "2026-11-15T07:08:40Z",
+          "account": "cc_orz666#7805",
+          "ign": "FUTUREGGGww",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:55:56Z",
+          "account": "robert031#1432",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T11:02:32Z",
+          "account": "flyrice888#2950",
+          "ign": "米饭的无情巨根",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:53+00:00",
+      "error": null
+    },
+    {
+      "base": "Vulture Talisman",
+      "level": 36,
+      "enchant": "Skills fire an additional Projectile",
+      "beast": "Saqawine Vulture",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/VultureBestiary",
+      "total": 306,
+      "listings_count": 3,
+      "min_chaos": 0.01,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 0.01,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "alch",
+          "chaos": 0.01,
+          "rarity": "rare",
+          "ilvl": 71,
+          "corrupted": false,
+          "indexed": "2026-11-14T21:05:46Z",
+          "account": "Tlaloc1981#0224",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-15T06:09:54Z",
+          "account": "xiaochun#8470",
+          "ign": "ROUDUN",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 72,
+          "corrupted": false,
+          "indexed": "2026-11-14T04:17:41Z",
+          "account": "Rain82182#1236",
+          "ign": null,
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:55+00:00",
+      "error": null
+    },
+    {
+      "base": "Craicic Talisman",
+      "level": 44,
+      "enchant": "100% increased Aspect of the Crab Buff Effect",
+      "beast": "Craiceann, First of the Deep",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/NessaCrabBestiarySpiritBoss",
+      "total": 7,
+      "listings_count": 3,
+      "min_chaos": 80.0,
+      "median_chaos": 90.0,
+      "max_chaos": 100.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 80.0,
+          "median_chaos": 90.0
+        }
+      },
+      "listings": [
+        {
+          "price": 80.0,
+          "currency": "chaos",
+          "chaos": 80.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T08:45:05Z",
+          "account": "Jojo33033#7509",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 90.0,
+          "currency": "chaos",
+          "chaos": 90.0,
+          "rarity": "rare",
+          "ilvl": 76,
+          "corrupted": false,
+          "indexed": "2026-11-15T05:52:52Z",
+          "account": "shadowflux#5421",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 100.0,
+          "currency": "chaos",
+          "chaos": 100.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T00:34:46Z",
+          "account": "kstg544#2035",
+          "ign": "摸魚東東",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:22:56+00:00",
+      "error": null
+    },
+    {
+      "base": "Farric Talisman",
+      "level": 44,
+      "enchant": "100% increased Aspect of the Cat Buff Effect",
+      "beast": "Farrul, First of the Plains",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/TigerBestiarySpiritBoss",
+      "total": 118,
+      "listings_count": 3,
+      "min_chaos": 1.0,
+      "median_chaos": 1.0,
+      "max_chaos": 1.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 1.0,
+          "median_chaos": 1.0
+        }
+      },
+      "listings": [
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:30:43Z",
+          "account": "BlazePentium#0886",
+          "ign": "Blayse_RipBuggo",
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T02:48:12Z",
+          "account": "Satreday#1488",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 1.0,
+          "currency": "chaos",
+          "chaos": 1.0,
+          "rarity": "rare",
+          "ilvl": 85,
+          "corrupted": false,
+          "indexed": "2026-11-15T01:53:55Z",
+          "account": "zzangttu#4274",
+          "ign": "UmbraHong",
+          "status": "online"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:23:07+00:00",
+      "error": null
+    },
+    {
+      "base": "Fenumal Talisman",
+      "level": 44,
+      "enchant": "100% increased Aspect of the Spider Buff Effect",
+      "beast": "Fenumus, First of the Night",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/SpiderPlatedBestiarySpiritBoss",
+      "total": 14,
+      "listings_count": 3,
+      "min_chaos": 5.0,
+      "median_chaos": 5.0,
+      "max_chaos": 8.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 5.0,
+          "median_chaos": 5.0
+        }
+      },
+      "listings": [
+        {
+          "price": 5.0,
+          "currency": "chaos",
+          "chaos": 5.0,
+          "rarity": "rare",
+          "ilvl": 80,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:40:28Z",
+          "account": "philanges#6653",
+          "ign": "phil_agony",
+          "status": "offline"
+        },
+        {
+          "price": 5.0,
+          "currency": "chaos",
+          "chaos": 5.0,
+          "rarity": "rare",
+          "ilvl": 83,
+          "corrupted": false,
+          "indexed": "2026-11-15T09:24:13Z",
+          "account": "skoozers#3756",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 8.0,
+          "currency": "chaos",
+          "chaos": 8.0,
+          "rarity": "rare",
+          "ilvl": 79,
+          "corrupted": false,
+          "indexed": "2026-11-15T10:47:04Z",
+          "account": "thatisweird#4118",
+          "ign": "FastaMastaBlastaBoi",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:23:08+00:00",
+      "error": null
+    },
+    {
+      "base": "Saqawine Talisman",
+      "level": 44,
+      "enchant": "100% increased Aspect of the Avian Buff Effect",
+      "beast": "Saqawal, First of the Sky",
+      "beast_path": "Metadata/Monsters/LeagueBestiary/MarakethBirdSpiritBoss",
+      "total": 15,
+      "listings_count": 3,
+      "min_chaos": 2.0,
+      "median_chaos": 2.0,
+      "max_chaos": 3.0,
+      "currency": "chaos",
+      "by_rarity": {
+        "rare": {
+          "count": 3,
+          "min_chaos": 2.0,
+          "median_chaos": 2.0
+        }
+      },
+      "listings": [
+        {
+          "price": 2.0,
+          "currency": "chaos",
+          "chaos": 2.0,
+          "rarity": "rare",
+          "ilvl": 76,
+          "corrupted": false,
+          "indexed": "2026-11-14T18:58:24Z",
+          "account": "RageBisQuits#7316",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 2.0,
+          "currency": "chaos",
+          "chaos": 2.0,
+          "rarity": "rare",
+          "ilvl": 84,
+          "corrupted": true,
+          "indexed": "2026-11-15T05:34:40Z",
+          "account": "Austin51x#3534",
+          "ign": null,
+          "status": "offline"
+        },
+        {
+          "price": 3.0,
+          "currency": "chaos",
+          "chaos": 3.0,
+          "rarity": "rare",
+          "ilvl": 76,
+          "corrupted": false,
+          "indexed": "2026-11-15T03:52:24Z",
+          "account": "MATLgg#5956",
+          "ign": "OLD_MALFOY",
+          "status": "offline"
+        }
+      ],
+      "fetched_at": "2026-11-15T11:26:40+00:00",
+      "error": null
+    }
+  ],
+  "unique_talismans": []
+}
